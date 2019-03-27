@@ -1,0 +1,38 @@
+@import 'palette';
+@import 'reset';
+@import url('https://fonts.googleapis.com/css?family=Major+Mono+Display|Share+Tech+Mono');
+
+body {
+    background-color: white;
+    div {
+        header {
+            background-color: $color1;
+            
+            h1 {
+                color: $color5;
+            }
+
+            p {
+                color: $color5;
+            } 
+
+            nav {
+                a {
+        
+                }
+            }
+            
+            main {
+                div {
+                    h2 {
+
+                    }
+
+                    p {
+
+                    }
+                }
+            }
+        }
+    }
+}

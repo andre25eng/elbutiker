@@ -1,0 +1,36 @@
+/* Coolors Exported Palette - coolors.co/30bced-303036-fffaff-fc5130-050401 */
+/* HSL */
+/* RGB */
+/* Enkel CSS-reset */
+@import url("https://fonts.googleapis.com/css?family=Major+Mono+Display|Share+Tech+Mono");
+html {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, ul {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: white;
+}
+
+body div header {
+  background-color: #30bced;
+}
+
+body div header h1 {
+  color: #050401;
+}
+
+body div header p {
+  color: #050401;
+}
+/*# sourceMappingURL=style.css.map */
