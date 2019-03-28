@@ -2,7 +2,7 @@
 /* HSL */
 /* RGB */
 /* Enkel CSS-reset */
-@import url("https://fonts.googleapis.com/css?family=Major+Mono+Display|Share+Tech+Mono");
+@import url("https://fonts.googleapis.com/css?family=Major+Mono+Display|Share+Tech+Mono|Ubuntu+Mono");
 html {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -20,17 +20,115 @@ body, h1, h2, h3, h4, h5, h6, p, ul {
 
 body {
   background-color: white;
+  position: fixed;
+}
+
+body #brbox {
+  background-color: #303036;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 500px;
+  width: 100%;
+  z-index: -99;
+  -webkit-transform: skewY(13deg) translateY(230px);
+          transform: skewY(13deg) translateY(230px);
+}
+
+body #brbox p {
+  color: #303036;
 }
 
 body div header {
   background-color: #30bced;
+  width: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto auto;
+      grid-template-columns: auto auto;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-transform: skewY(-2deg) translateY(-70px);
+          transform: skewY(-2deg) translateY(-70px);
+  height: 200px;
+  position: fixed;
+  -webkit-box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
-body div header h1 {
+body div header div {
+  -webkit-transform: skewY(2deg) translateY(50px);
+          transform: skewY(2deg) translateY(50px);
+}
+
+body div header div h1 {
+  color: #050401;
+  font-family: Share Tech Mono;
+  padding: 20px;
+  font-weight: 400;
+}
+
+body div header div p {
+  color: #050401;
+  font-family: Share Tech Mono;
+  padding-left: 20px;
+}
+
+body div header nav {
+  -webkit-transform: skewY(2deg) translateY(100px);
+          transform: skewY(2deg) translateY(100px);
+  padding: 20px;
+  font-family: Share Tech Mono;
+}
+
+body div header nav a {
+  padding: 5px;
+  text-decoration: none;
   color: #050401;
 }
 
-body div header p {
-  color: #050401;
+body div header nav a:hover {
+  color: #fc5130;
+}
+
+body div header nav #curent {
+  text-decoration: underline;
+  color: #303036;
+}
+
+body div main {
+  background-color: #fc5130;
+  width: 60%;
+  margin: auto;
+  height: 1000px;
+  -webkit-box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+body div main div {
+  margin: 0px 15px;
+  background-color: white;
+  height: 100%;
+  padding-top: 150px;
+  font-family: Ubuntu Mono;
+}
+
+body div main div h2 {
+  text-align: center;
+  font-size: 35px;
+  font-weight: 300;
+  padding: 70px 70px 0px 70px;
+}
+
+body div main div p {
+  width: 60%;
+  font-size: 20px;
+  margin: auto;
+  padding: 40px;
+}
+
+body div main.wide {
+  width: 100%;
 }
 /*# sourceMappingURL=style.css.map */

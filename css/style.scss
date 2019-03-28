@@ -1,38 +1,99 @@
 @import 'palette';
 @import 'reset';
-@import url('https://fonts.googleapis.com/css?family=Major+Mono+Display|Share+Tech+Mono');
+@import url('https://fonts.googleapis.com/css?family=Major+Mono+Display|Share+Tech+Mono|Ubuntu+Mono');
 
 body {
     background-color: white;
+    position: fixed;
+    #brbox {
+        background-color: $color2;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        height: 500px;
+        width: 100%;
+        z-index: -99;
+        transform: skewY(13deg) translateY(230px);
+        p {
+            color: $color2;
+        }
+    }
     div {
         header {
             background-color: $color1;
-            
-            h1 {
-                color: $color5;
-            }
+            width: 100%;
+            display: grid;
+            grid-template-columns: auto auto;
+            justify-content: space-between;
+            transform: skewY(-2deg) translateY(-70px);
+            height: 200px;
+            position: fixed;
+            box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2);
+            div {
+                transform: skewY(2deg) translateY(50px);
+                h1 {
+                    color: $color5;
+                    font-family: Share Tech Mono;
+                    padding: 20px;
+                    font-weight: 400;
+                }
 
-            p {
-                color: $color5;
-            } 
+                p {
+                    color: $color5;
+                    font-family: Share Tech Mono;
+                    padding-left: 20px;
+                } 
+            }
 
             nav {
+                transform: skewY(2deg) translateY(100px);
+                padding: 20px;
+                font-family: Share Tech Mono;
                 a {
-        
+                    padding: 5px;
+                    text-decoration: none;
+                    color: $color5;
+                }
+
+                a:hover {
+                    color: $color4;
+                }
+
+                #curent {
+                    text-decoration: underline;
+                    color: $color2;
                 }
             }
-            
-            main {
-                div {
-                    h2 {
+        }
+        main {
+            background-color: $color4;
+            width: 60%;
+            margin: auto;
+            height: 1000px;
+            box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2);
+            div {
+                margin:  0px 15px;
+                background-color: white;
+                height: 100%;
+                padding-top: 150px;
+                font-family: Ubuntu Mono;
+                h2 {
+                    text-align: center;
+                    font-size: 35px;
+                    font-weight: 300;
+                    padding: 70px 70px 0px 70px;
+                }
 
-                    }
-
-                    p {
-
-                    }
+                p {
+                    width: 60%;
+                    font-size: 20px;
+                    margin: auto;
+                    padding: 40px;
                 }
             }
+        }
+        main.wide {
+            width: 100%;
         }
     }
 }
