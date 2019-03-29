@@ -16,15 +16,23 @@
             </div>
             <nav>
                 <a href="hem.php">Hem</a>
-                <a id="curent" href="#">Butiker</a>
+                <a href="butiker.php">Butiker</a>
                 <a href="recensioner.php">Recensioner</a>
-                <a href="skapa.php">Skapa Konto</a>
+                <a id="curent" href="skapa.php">Skapa Konto</a>
                 <a href="login.php">Log In</a>
             </nav>
         </header>
-        <main class="wide">
+        <main>
             <div>
-                <h2>Var ligger butikerna?</h2>
+                <h2>Skapa Konto</h2>
+                <form action="">
+                    <label for="username">Användarnamn</label><input id="username" type="text"><br>
+                    <label for="password">Lösenord</label><input id="password" type="password"><br>
+                    <label for="email">E-post</label><input id="email" type="password"><br>
+                    <label for="firstname">Förnamn</label><input id="firstname" type="password"><br>
+                    <label for="surename">Efternamn</label><input id="surename" type="password"><br>
+                    <button>Skapa</button>
+                </form>
             </div>
         </main>
     </div>

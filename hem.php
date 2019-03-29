@@ -15,11 +15,11 @@
                 <p>Välj butiken som passar dig bäst</p>
             </div>
             <nav>
-                <a id="curent" href="#">Hem</a>
+                <a id="curent" href="hem.php">Hem</a>
                 <a href="butiker.php">Butiker</a>
-                <a href="#">Recensioner</a>
-                <a href="#">Skapa Konto</a>
-                <a href="#">Log In</a>
+                <a href="recensioner.php">Recensioner</a>
+                <a href="skapa.php">Skapa Konto</a>
+                <a href="login.php">Log In</a>
             </nav>
         </header>
         <main>

@@ -21,6 +21,7 @@ body, h1, h2, h3, h4, h5, h6, p, ul {
 body {
   background-color: white;
   position: fixed;
+  width: 100%;
 }
 
 body #brbox {
@@ -98,6 +99,7 @@ body div header nav #curent {
 }
 
 body div main {
+  font-family: Ubuntu Mono;
   background-color: #fc5130;
   width: 60%;
   margin: auto;
@@ -111,7 +113,6 @@ body div main div {
   background-color: white;
   height: 100%;
   padding-top: 150px;
-  font-family: Ubuntu Mono;
 }
 
 body div main div h2 {
@@ -126,6 +127,38 @@ body div main div p {
   font-size: 20px;
   margin: auto;
   padding: 40px;
+}
+
+body div main div form {
+  margin: 50px;
+  text-align: center;
+}
+
+body div main div form label {
+  margin: 10px;
+  font-size: 20px;
+  display: inline-block;
+  width: 120px;
+}
+
+body div main div form input {
+  margin: 10px;
+  font-size: 20px;
+}
+
+body div main div form button {
+  font-family: Ubuntu Mono;
+  font-size: 20px;
+  color: white;
+  background-color: #303036;
+  margin: 10px;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+body div main div form button:hover {
+  background-color: #00a000;
 }
 
 body div main.wide {

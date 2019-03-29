@@ -16,15 +16,15 @@
             </div>
             <nav>
                 <a href="hem.php">Hem</a>
-                <a id="curent" href="#">Butiker</a>
-                <a href="recensioner.php">Recensioner</a>
+                <a href="butiker.php">Butiker</a>
+                <a id="curent" href="recensioner.php">Recensioner</a>
                 <a href="skapa.php">Skapa Konto</a>
                 <a href="login.php">Log In</a>
             </nav>
         </header>
         <main class="wide">
             <div>
-                <h2>Var ligger butikerna?</h2>
+                <h2>Resencioner</h2>
             </div>
         </main>
     </div>

@@ -5,6 +5,7 @@
 body {
     background-color: white;
     position: fixed;
+    width: 100%;
     #brbox {
         background-color: $color2;
         position: fixed;
@@ -66,6 +67,7 @@ body {
             }
         }
         main {
+            font-family: Ubuntu Mono;
             background-color: $color4;
             width: 60%;
             margin: auto;
@@ -76,7 +78,6 @@ body {
                 background-color: white;
                 height: 100%;
                 padding-top: 150px;
-                font-family: Ubuntu Mono;
                 h2 {
                     text-align: center;
                     font-size: 35px;
@@ -89,6 +90,35 @@ body {
                     font-size: 20px;
                     margin: auto;
                     padding: 40px;
+                }
+
+                form {
+                    margin: 50px;
+                    text-align: center;
+                    label {
+                        margin: 10px;
+                        font-size: 20px;
+                        display: inline-block;
+                        width: 120px;
+                    }
+                    input {
+                        margin: 10px;
+                        font-size: 20px;
+                    }
+                    button {
+                        font-family: Ubuntu Mono;
+                        font-size: 20px;
+                        color: white;
+                        background-color: $color2;
+                        margin: 10px;
+                        border: none;
+                        padding: 10px;
+                        border-radius: 5px;
+                    }
+
+                    button:hover {
+                        background-color: rgb(0, 160, 0);;
+                    }
                 }
             }
         }
