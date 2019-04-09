@@ -6,7 +6,7 @@
     <title>El Butiker STHLM</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="bodyFix">
     <div id="brbox"><p>nothing to see here</p></div>
     <div class="container">
         <header>

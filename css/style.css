@@ -18,9 +18,12 @@ body, h1, h2, h3, h4, h5, h6, p, ul {
   padding: 0;
 }
 
+.bodyFix {
+  position: fixed;
+}
+
 body {
   background-color: white;
-  position: fixed;
   width: 100%;
 }
 
@@ -163,5 +166,58 @@ body div main div form button:hover {
 
 body div main.wide {
   width: 100%;
+  height: auto;
+}
+
+body div main.wide .whiteDiv {
+  padding-bottom: 100px;
+}
+
+body div main.wide div {
+  padding: 5px;
+}
+
+body div main.wide div h2 {
+  padding-top: 200px;
+}
+
+body div main.wide div .ButikNamnTitle {
+  font-size: 25px;
+  text-align: center;
+  margin: 20px;
+  margin-top: 70px;
+}
+
+body div main.wide div .ButikSection {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto auto;
+      grid-template-columns: auto auto;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+body div main.wide div .ButikSection .ResBox {
+  text-align: center;
+}
+
+body div main.wide div .ButikSection .ResBox .ResTitle {
+  font-size: 20px;
+  padding: 5px;
+  margin-top: 25px;
+}
+
+body div main.wide div .ButikSection .ResBox .checked {
+  color: orange;
+}
+
+body div main.wide div .ButikSection .ResBox .ResText {
+  font-size: 15px;
+  padding: 5px;
+}
+
+body div main.wide div .ButikSection .ResBox img {
+  width: 300px;
+  padding: 20px;
 }
 /*# sourceMappingURL=style.css.map */

@@ -23,8 +23,57 @@
             </nav>
         </header>
         <main class="wide">
-            <div>
+            <div class="whiteDiv">
                 <h2>Var ligger butikerna?</h2>
+                <h3 class="ButikNamnTitle">Inet Butiker</h3>
+                <div class="ButikSection">
+                    <div class="ResBox">
+                        <h4 class="ResTitle">Inet Hötorget</h4>
+                        <img src="images/map.png" alt="karta">
+                    </div>
+                    <div class="ResBox">
+                        <h4 class="ResTitle">Inet Barkaby</h4>
+                        <img src="images/map.png" alt="karta">
+                    </div>
+                </div>
+                <h3 class="ButikNamnTitle">Webhallen Butiker</h3>
+                <div class="ButikSection">
+                    <div class="ResBox">
+                        <h4 class="ResTitle">Webhallen Sveavägen</h4>
+                        <img src="images/map.png" alt="karta">
+                    </div>
+                    <div class="ResBox">
+                        <h4 class="ResTitle">Webhallen Medborgarplatse</h4>
+                        <img src="images/map.png" alt="karta">
+                    </div>
+                    <div class="ResBox">
+                        <h4 class="ResTitle">Webhallen Sveavägen</h4>
+                        <img src="images/map.png" alt="karta">
+                    </div>
+                    <div class="ResBox">
+                        <h4 class="ResTitle">Webhallen Medborgarplatse</h4>
+                        <img src="images/map.png" alt="karta">
+                    </div>
+                </div>
+                <h3 class="ButikNamnTitle">Elgiganten Butiker</h3>
+                <div class="ButikSection">
+                    <div class="ResBox">
+                        <h4 class="ResTitle">Elgiganten Kungsgatan</h4>
+                        <img src="images/map.png" alt="karta">
+                    </div>
+                    <div class="ResBox">
+                        <h4 class="ResTitle">Webhallen Nacka</h4>
+                        <img src="images/map.png" alt="karta">
+                    </div>
+                    <div class="ResBox">
+                        <h4 class="ResTitle">Webhallen Kungens Kurva</h4>
+                        <img src="images/map.png" alt="karta">
+                    </div>
+                    <div class="ResBox">
+                        <h4 class="ResTitle">Webhallen Barkaby</h4>
+                        <img src="images/map.png" alt="karta">
+                    </div>
+                </div>
             </div>
         </main>
     </div>
