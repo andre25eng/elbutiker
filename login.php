@@ -1,3 +1,18 @@
+<?php
+/*
+* PHP version 7
+* @category   Elektronik Butiker
+* @author     André Englund <andre25eng@gmail.com>
+* @license    PHP CC
+*/
+
+ 
+error_reporting(E_ALL);
+ini_set("display_erroes", 1);
+ 
+include_once "{$_SERVER["DOCUMENT_ROOT"]}/../config/config-db.inc.php";
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="sv">
 <head>
@@ -25,11 +40,39 @@
         <main>
             <div>
                 <h2>Log in</h2>
-                <form action="">
-                    <label for="username">Användarnamn</label><input id="username" type="text"><br>
-                    <label for="password">Lösenord</label><input id="password" type="password"><br>
+                <form action="#" method="post">
+                    <label for="username">Användarnamn</label><input id="username" type="text" name="username" required><br>
+                    <label for="password">Lösenord</label><input id="password" type="password" name="password" required><br>
                     <button>Log in</button>
                 </form>
+                <?php
+                if (isset($_POST["username"]) && isset($_POST["password"])) {
+                    $anamn = filter_input(INPUT_POST, "username", FILTER_SANITIZE_STRING);
+                    $losen = filter_input(INPUT_POST, "password", FILTER_SANITIZE_STRING);
+
+                    $conn = new mysqli($hostname, $user, $password, $database);
+
+                    if ($conn->connect_error) {
+                        die("Kunde inte ansluta till databasrn: " . $conn->connect_error);
+                    }
+
+                    $sql = "SELECT * FROM admin WHERE anamn = '$anamn'";
+                    $result = $conn->query($sql);
+
+                    if (!$result) {
+                        die("Något blev fel med sql-satsen: " . $conn->error);
+                    } else {
+                        $user = $result->fetch_assoc();
+
+                        if (password_verify($losen, $user['losen'])) {
+                            $_SESSION['loggedin'] = true;
+                            $_SESSION['anamn'] = $user['anamn'];
+                        } else {
+                            echo "<script>alert('Lösenordet är fel!')</script>";
+                        }
+                    }
+                }
+                ?>
             </div>
         </main>
     </div>

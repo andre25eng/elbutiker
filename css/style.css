@@ -142,11 +142,19 @@ body div main div form label {
   font-size: 20px;
   display: inline-block;
   width: 120px;
+  vertical-align: top;
 }
 
 body div main div form input {
   margin: 10px;
   font-size: 20px;
+  width: 250px;
+}
+
+body div main div form textarea {
+  resize: none;
+  width: 250px;
+  margin: 10px;
 }
 
 body div main div form button {

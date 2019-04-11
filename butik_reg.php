@@ -38,41 +38,38 @@ include_once "{$_SERVER["DOCUMENT_ROOT"]}/../config/config-db.inc.php";
         </header>
         <main>
             <div>
-                <h2>Skapa Konto</h2>
+                <h2>Regestrera ny butik</h2>
                 <form action="#" method="post">
-                    <label for="username">Användarnamn</label><input id="username" type="text" name="username" required><br>
-                    <label for="password">Lösenord</label><input id="password" type="password" name="password" required><br>
-                    <label for="password">Upprepa Lösenord</label><input id="rpassword" type="password" required><br>
-                    <label for="email">E-post</label><input id="email" type="text" name="email" required><br>
-                    <label for="firstname">Förnamn</label><input id="firstname" type="text" name="firstname" required><br>
-                    <label for="surename">Efternamn</label><input id="surename" type="text" name="surename" required><br>
-                    <button>Skapa</button>
+                    <label for="bgrupp">Butik Grupp</label><input id="bgrupp" type="text" name="bgrupp" required><br>
+                    <label for="bnamn">Butik Namn</label><input id="bnamn" type="text" name="bnamn" required><br>
+                    <label for="recensioner">Resencion</label><textarea name="recensioner" id="recensioner" cols="30" rows="10" required></textarea><br>
+                    <label for="latitude">Latitude</label><input id="latitude" type="text" name="latitude" required><br>
+                    <label for="longitude">Longitude</label><input id="longitude" type="text" name="longitude" required><br>
+                    <button>Lägg till</button>
                 </form>
                 <?php
-                if (isset($_POST["username"]) && isset($_POST["password"]) && isset($_POST["email"]) && isset($_POST["firstname"]) && isset($_POST["surename"])) {
+                if (isset($_POST["bgrupp"]) && isset($_POST["bnamn"]) && isset($_POST["recension"]) && isset($_POST["latitude"]) && isset($_POST["longitude"])) {
                     
                     
-                    $fnamn = filter_input(INPUT_POST, "firstname", FILTER_SANITIZE_STRING);
-                    $enamn = filter_input(INPUT_POST, "surename", FILTER_SANITIZE_STRING);
-                    $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_STRING);
-                    $losen = filter_input(INPUT_POST, "password", FILTER_SANITIZE_STRING);
-                    $anamn = filter_input(INPUT_POST, "username", FILTER_SANITIZE_STRING);
+                    $bgrupp = filter_input(INPUT_POST, "bgrupp", FILTER_SANITIZE_STRING);
+                    $bnamn = filter_input(INPUT_POST, "bnamn", FILTER_SANITIZE_STRING);
+                    $recensioner = filter_input(INPUT_POST, "recensioner", FILTER_SANITIZE_STRING);
+                    $latitude = filter_input(INPUT_POST, "latitude", FILTER_SANITIZE_STRING);
+                    $longitude = filter_input(INPUT_POST, "longitude", FILTER_SANITIZE_STRING);
 
                     $conn = new mysqli($hostname, $user, $password, $database);
 
                     if ($conn->connect_error) {
                         die("Kunde inte ansluta till databasrn: " . $conn->connect_error);
                     }
-                    
-                    $hash = password_hash($losen, PASSWORD_DEFAULT);
 
-                    $sql = "INSERT INTO admin (fnamn, enamn, epost, losen, anamn) VALUES ('$fnamn', '$enamn', '$email', '$hash', '$anamn');";
+                    $sql = "INSERT INTO butiker (bgrupp, bnamn, recensioner, latitude, longitude) VALUES ('$bgrupp', '$bnamn', '$recensioner', '$latitude', '$longitude');";
                     $result = $conn->query($sql);
 
                     if (!$result) {
                         die("Något blev fel med sql-satsen: " . $conn->error);
                     } else {
-                        echo "<script>alert('Konto har skapats!')</script>";
+                        echo "<script>alert('Butiken har lagts till!')</script>";
                     }
                 }
                 ?>

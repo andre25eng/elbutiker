@@ -103,11 +103,20 @@ body {
                         font-size: 20px;
                         display: inline-block;
                         width: 120px;
+                        vertical-align: top;
                     }
                     input {
                         margin: 10px;
                         font-size: 20px;
+                        width: 250px;
                     }
+
+                    textarea {
+                        resize: none;
+                        width: 250px;
+                        margin: 10px;
+                    }
+
                     button {
                         font-family: Ubuntu Mono;
                         font-size: 20px;
