@@ -5,12 +5,16 @@
 * @author     André Englund <andre25eng@gmail.com>
 * @license    PHP CC
 */
-
 /* 
 error_reporting(E_ALL);
-ini_set("display_erroes", 1);
- */
+ini_set("display_erroes", 1); 
+*/
+ 
 include_once "{$_SERVER["DOCUMENT_ROOT"]}/../config/config-db.inc.php";
+session_start();
+if (!isset($_SESSION['loggedin'])) {
+    $_SESSION['loggedin'] = false;
+}
 ?>
 <!DOCTYPE html>
 <html lang="sv">
@@ -32,8 +36,15 @@ include_once "{$_SERVER["DOCUMENT_ROOT"]}/../config/config-db.inc.php";
                 <a href="hem.php">Hem</a>
                 <a href="butiker.php">Butiker</a>
                 <a href="recensioner.php">Recensioner</a>
-                <a id="curent" href="skapa.php">Skapa Konto</a>
-                <a href="login.php">Log In</a>
+                <?php 
+                if ($_SESSION['loggedin']) {
+                    echo "<a href=\"butik_reg.php\" id=\"curent\">Lägg till Butik</a>
+                          <a href=\"logut.php\">Log Ut</a>";
+                } else {
+                    echo "<a href=\"skapa.php\">Skapa Konto</a>
+                          <a href=\"login.php\">Log In</a>";
+                }
+                ?>
             </nav>
         </header>
         <main>
@@ -42,13 +53,13 @@ include_once "{$_SERVER["DOCUMENT_ROOT"]}/../config/config-db.inc.php";
                 <form action="#" method="post">
                     <label for="bgrupp">Butik Grupp</label><input id="bgrupp" type="text" name="bgrupp" required><br>
                     <label for="bnamn">Butik Namn</label><input id="bnamn" type="text" name="bnamn" required><br>
-                    <label for="recensioner">Resencion</label><textarea name="recensioner" id="recensioner" cols="30" rows="10" required></textarea><br>
+                    <label for="recensioner">Resencion</label><textarea type="text" name="recensioner" id="recensioner" cols="30" rows="10" required></textarea><br>
                     <label for="latitude">Latitude</label><input id="latitude" type="text" name="latitude" required><br>
                     <label for="longitude">Longitude</label><input id="longitude" type="text" name="longitude" required><br>
                     <button>Lägg till</button>
                 </form>
                 <?php
-                if (isset($_POST["bgrupp"]) && isset($_POST["bnamn"]) && isset($_POST["recension"]) && isset($_POST["latitude"]) && isset($_POST["longitude"])) {
+                if (isset($_POST["bgrupp"]) && isset($_POST["bnamn"]) && isset($_POST["recensioner"]) && isset($_POST["latitude"]) && isset($_POST["longitude"])) {
                     
                     
                     $bgrupp = filter_input(INPUT_POST, "bgrupp", FILTER_SANITIZE_STRING);

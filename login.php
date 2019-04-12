@@ -5,13 +5,16 @@
 * @author     André Englund <andre25eng@gmail.com>
 * @license    PHP CC
 */
-
- 
+/* 
 error_reporting(E_ALL);
-ini_set("display_erroes", 1);
+ini_set("display_erroes", 1); 
+*/
  
 include_once "{$_SERVER["DOCUMENT_ROOT"]}/../config/config-db.inc.php";
 session_start();
+if (!isset($_SESSION['loggedin'])) {
+    $_SESSION['loggedin'] = false;
+}
 ?>
 <!DOCTYPE html>
 <html lang="sv">
@@ -33,8 +36,15 @@ session_start();
                 <a href="hem.php">Hem</a>
                 <a href="butiker.php">Butiker</a>
                 <a href="recensioner.php">Recensioner</a>
-                <a href="skapa.php">Skapa Konto</a>
-                <a id="curent" href="login.php">Log In</a>
+                <?php 
+                if ($_SESSION['loggedin']) {
+                    echo "<a href=\"butik_reg.php\">Lägg till Butik</a>
+                          <a href=\"logut.php\">Log Ut</a>";
+                } else {
+                    echo "<a href=\"skapa.php\">Skapa Konto</a>
+                          <a id=\"curent\" href=\"login.php\">Log In</a>";
+                }
+                ?>
             </nav>
         </header>
         <main>
@@ -67,6 +77,7 @@ session_start();
                         if (password_verify($losen, $user['losen'])) {
                             $_SESSION['loggedin'] = true;
                             $_SESSION['anamn'] = $user['anamn'];
+                            header('Location: butik_reg.php');
                         } else {
                             echo "<script>alert('Lösenordet är fel!')</script>";
                         }
