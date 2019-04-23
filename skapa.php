@@ -23,6 +23,7 @@ if (!isset($_SESSION['loggedin'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>El Butiker STHLM</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animate.css">
 </head>
 <body class="bodyFix">
     <div id="brbox"><p>nothing to see here</p></div>
@@ -51,16 +52,16 @@ if (!isset($_SESSION['loggedin'])) {
             <div>
                 <h2>Skapa Konto</h2>
                 <form action="#" method="post">
-                    <label for="username">Användarnamn</label><input id="username" type="text" name="username" required><br>
-                    <label for="password">Lösenord</label><input id="password" type="password" name="password" required><br>
+                    <label for="username">Användarnamn</label><input id="username" type="text" name="username" required value="<?php echo isset($_POST['username']) ? $_POST['username'] : ''?>"><br>
+                    <label for="password">Lösenord</label><input id="password" type="password" name="password" required value="<?php echo isset($_POST['password']) ? $_POST['password'] : ''?>"><br>
                     <label for="password">Upprepa Lösenord</label><input id="rpassword" type="password" required><br>
-                    <label for="email">E-post</label><input id="email" type="text" name="email" required><br>
-                    <label for="firstname">Förnamn</label><input id="firstname" type="text" name="firstname" required><br>
-                    <label for="surename">Efternamn</label><input id="surename" type="text" name="surename" required><br>
+                    <label for="email">E-post</label><input id="email" type="text" name="email" required value="<?php echo isset($_POST['email']) ? $_POST['email'] : ''?>"><br>
+                    <label for="firstname">Förnamn</label><input id="firstname" type="text" name="firstname" required value="<?php echo isset($_POST['firstname']) ? $_POST['firstname'] : ''?>"><br>
+                    <label for="surename">Efternamn</label><input id="surename" type="text" name="surename" required value="<?php echo isset($_POST['surename']) ? $_POST['surename'] : ''?>"><br>
                     <button>Skapa</button>
                 </form>
                 <?php
-                if (isset($_POST["username"]) && isset($_POST["password"]) && isset($_POST["email"]) && isset($_POST["firstname"]) && isset($_POST["surename"])) {
+                if (isset($_POST["username"], $_POST["password"], $_POST["email"], $_POST["firstname"], $_POST["surename"])) {
                     
                     
                     $fnamn = filter_input(INPUT_POST, "firstname", FILTER_SANITIZE_STRING);
@@ -75,17 +76,32 @@ if (!isset($_SESSION['loggedin'])) {
                         die("Kunde inte ansluta till databasrn: " . $conn->connect_error);
                     }
                     
-                    $hash = password_hash($losen, PASSWORD_DEFAULT);
-
-                    $sql = "INSERT INTO admin (fnamn, enamn, epost, losen, anamn) VALUES ('$fnamn', '$enamn', '$email', '$hash', '$anamn');";
-                    $result = $conn->query($sql);
-
-                    if (!$result) {
-                        die("Något blev fel med sql-satsen: " . $conn->error);
+                    $check = "SELECT * FROM admin WHERE anamn = '$_POST[username]'";
+                    $rs = mysqli_query($conn, $check);
+                    $data = mysqli_fetch_array($rs, MYSQLI_NUM);
+                    if($data[0] > 1) {
+                        echo "<p class=\"animated tada redbox\">Användarnamnet är upptaget!</p>";
                     } else {
-                        echo "<script>alert('Konto har skapats!')</script>";
+                        $check = "SELECT * FROM admin WHERE epost = '$email'";
+                        $rs = mysqli_query($conn, $check);
+                        $data = mysqli_fetch_array($rs, MYSQLI_NUM);
+                        if($data[0] > 1) {
+                            echo "<p class=\"animated tada redbox\">E-post är upptagen!</p>";
+                        } else {
+                            $hash = password_hash($losen, PASSWORD_DEFAULT);
+
+                            $sql = "INSERT INTO admin (fnamn, enamn, epost, losen, anamn) VALUES ('$fnamn', '$enamn', '$email', '$hash', '$anamn');";
+                            $result = $conn->query($sql);
+
+                            if (!$result) {
+                                die("Något blev fel med sql-satsen: " . $conn->error);
+                            } 
+                            
+                            echo "<script>alert('Konto har skapats!')</script>";
+                            header('Location: login.php');
+                            }
+                        }
                     }
-                }
                 ?>
             </div>
         </main>

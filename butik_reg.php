@@ -23,6 +23,7 @@ if (!isset($_SESSION['loggedin'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>El Butiker STHLM</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animate.css">
 </head>
 <body class="bodyFix">
     <div id="brbox"><p>nothing to see here</p></div>
@@ -59,7 +60,7 @@ if (!isset($_SESSION['loggedin'])) {
                     <button>Lägg till</button>
                 </form>
                 <?php
-                if (isset($_POST["bgrupp"]) && isset($_POST["bnamn"]) && isset($_POST["recensioner"]) && isset($_POST["latitude"]) && isset($_POST["longitude"])) {
+                if (isset($_POST["bgrupp"], $_POST["bnamn"], $_POST["recensioner"], $_POST["latitude"], $_POST["longitude"])) {
                     
                     
                     $bgrupp = filter_input(INPUT_POST, "bgrupp", FILTER_SANITIZE_STRING);
@@ -74,13 +75,24 @@ if (!isset($_SESSION['loggedin'])) {
                         die("Kunde inte ansluta till databasrn: " . $conn->connect_error);
                     }
 
-                    $sql = "INSERT INTO butiker (bgrupp, bnamn, recensioner, latitude, longitude) VALUES ('$bgrupp', '$bnamn', '$recensioner', '$latitude', '$longitude');";
-                    $result = $conn->query($sql);
-
-                    if (!$result) {
-                        die("Något blev fel med sql-satsen: " . $conn->error);
+                    $check = "SELECT * FROM admin WHERE anamn = '$_POST[username]'";
+                    $rs = mysqli_query($conn, $check);
+                    $data = mysqli_fetch_array($rs, MYSQLI_NUM);
+                    if($data[0] > 1) {
+                        echo "<p class=\"animated tada redbox\">Butiken är redan registrerad!</p>";
                     } else {
-                        echo "<script>alert('Butiken har lagts till!')</script>";
+
+
+
+
+                        $sql = "INSERT INTO butiker (bgrupp, bnamn, recensioner, latitude, longitude) VALUES ('$bgrupp', '$bnamn', '$recensioner', '$latitude', '$longitude');";
+                        $result = $conn->query($sql);
+
+                        if (!$result) {
+                            die("Något blev fel med sql-satsen: " . $conn->error);
+                        } else {
+                            echo "<script>alert('Butiken har lagts till!')</script>";
+                        }
                     }
                 }
                 ?>
