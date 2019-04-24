@@ -55,36 +55,23 @@ if (!isset($_SESSION['loggedin'])) {
                     <label for="bgrupp">Butik Grupp</label><input id="bgrupp" type="text" name="bgrupp" required><br>
                     <label for="bnamn">Butik Namn</label><input id="bnamn" type="text" name="bnamn" required><br>
                     <label for="recensioner">Resencion</label><textarea type="text" name="recensioner" id="recensioner" cols="30" rows="10" required></textarea><br>
-                    <label for="latitude">Latitude</label><input id="latitude" type="text" name="latitude" required><br>
-                    <label for="longitude">Longitude</label><input id="longitude" type="text" name="longitude" required><br>
+                    <label for="address">Address</label><input id="address" type="text" name="address" required><br>
                     <button>Lägg till</button>
                 </form>
                 <?php
-                if (isset($_POST["bgrupp"], $_POST["bnamn"], $_POST["recensioner"], $_POST["latitude"], $_POST["longitude"])) {
+                if (isset($_POST["bgrupp"], $_POST["bnamn"], $_POST["recensioner"], $_POST["address"])) {
                     
                     
                     $bgrupp = filter_input(INPUT_POST, "bgrupp", FILTER_SANITIZE_STRING);
                     $bnamn = filter_input(INPUT_POST, "bnamn", FILTER_SANITIZE_STRING);
                     $recensioner = filter_input(INPUT_POST, "recensioner", FILTER_SANITIZE_STRING);
                     $latitude = filter_input(INPUT_POST, "latitude", FILTER_SANITIZE_STRING);
-                    $longitude = filter_input(INPUT_POST, "longitude", FILTER_SANITIZE_STRING);
 
                     $conn = new mysqli($hostname, $user, $password, $database);
 
                     if ($conn->connect_error) {
                         die("Kunde inte ansluta till databasrn: " . $conn->connect_error);
-                    }
-
-                    $check = "SELECT * FROM admin WHERE anamn = '$_POST[username]'";
-                    $rs = mysqli_query($conn, $check);
-                    $data = mysqli_fetch_array($rs, MYSQLI_NUM);
-                    if($data[0] > 1) {
-                        echo "<p class=\"animated tada redbox\">Butiken är redan registrerad!</p>";
                     } else {
-
-
-
-
                         $sql = "INSERT INTO butiker (bgrupp, bnamn, recensioner, latitude, longitude) VALUES ('$bgrupp', '$bnamn', '$recensioner', '$latitude', '$longitude');";
                         $result = $conn->query($sql);
 
