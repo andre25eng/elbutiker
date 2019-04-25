@@ -38,7 +38,7 @@ if (!isset($_SESSION['loggedin'])) {
                 <a href="recensioner.php">Recensioner</a>
                 <?php 
                 if ($_SESSION['loggedin']) {
-                    echo "<a href=\"butik_reg.php\">Lägg till Butik</a>
+                    echo "<a href=\"mapbox.php\">Lägg till Butik</a>
                           <a href=\"logut.php\">Log Ut</a>";
                 } else {
                     echo "<a href=\"skapa.php\">Skapa Konto</a>
@@ -77,7 +77,7 @@ if (!isset($_SESSION['loggedin'])) {
                         if (password_verify($losen, $user['losen'])) {
                             $_SESSION['loggedin'] = true;
                             $_SESSION['anamn'] = $user['anamn'];
-                            header('Location: butik_reg.php');
+                            header('Location: mapbox.php');
                         } else {
                             echo "<script>alert('Lösenordet är fel!')</script>";
                         }

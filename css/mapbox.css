@@ -1,3 +1,7 @@
+@import 'palette';
+@import 'reset';
+@import url('https://fonts.googleapis.com/css?family=Major+Mono+Display|Share+Tech+Mono|Ubuntu+Mono');
+
 /* Enkel CSS-reset */
 html {
     box-sizing: border-box;
@@ -31,6 +35,12 @@ body {
     padding: 20px;
     border-radius: 10px;
     width: 400px;
+    font-family: Share Tech Mono;
+}
+
+h2 {
+    padding-bottom: 10px;
+    font-size: 30px;
 }
 
 .platser {

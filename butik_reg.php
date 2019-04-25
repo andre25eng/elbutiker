@@ -59,13 +59,14 @@ if (!isset($_SESSION['loggedin'])) {
                     <button>Lägg till</button>
                 </form>
                 <?php
-                if (isset($_POST["bgrupp"], $_POST["bnamn"], $_POST["recensioner"], $_POST["address"])) {
+                if (isset($_POST["bgrupp"], $_POST["bnamn"], $_POST["recensioner"], $_POST["latitude"], $_POST["longitude"])) {
                     
                     
                     $bgrupp = filter_input(INPUT_POST, "bgrupp", FILTER_SANITIZE_STRING);
                     $bnamn = filter_input(INPUT_POST, "bnamn", FILTER_SANITIZE_STRING);
                     $recensioner = filter_input(INPUT_POST, "recensioner", FILTER_SANITIZE_STRING);
                     $latitude = filter_input(INPUT_POST, "latitude", FILTER_SANITIZE_STRING);
+                    $longitude = filter_input(INPUT_POST, "longitude", FILTER_SANITIZE_STRING);
 
                     $conn = new mysqli($hostname, $user, $password, $database);
 
